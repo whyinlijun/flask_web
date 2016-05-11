@@ -1,0 +1,23 @@
+{%extends "base.html"%}
+{%block content%}
+<div class="ul_li_table_500">
+    <ul>
+            <li class="bt">单号:{{order.order_num}}</li>
+            <li class="bt">日期:{{order.order_date}}</li>
+            <li class="bt">数量:{{order.order_quantity}}</li>
+
+            <li class="bt">金额:{{order.order_sum}}</li>
+
+{% for item in good %}
+    <li>{{item.order_num}}</li>
+    <li>{{item.good_name}}</li>
+    <li style="text-align:right;">{{item.good_quantity}}</li>
+
+    <li style="text-align:right;">{{item.good_sum}}</li>
+
+{% endfor %}
+    </ul>
+<div style="color:red;text-align:right;font-size:18px"><a href="{{url_for('order_show',dbname='order')}}">返回</a>
+</div>
+
+{%endblock%}

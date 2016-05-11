@@ -1,0 +1,10 @@
+{%extends "base.html"%}
+{%block content%}
+        <ul>
+            {% for key in address_data %}
+             <li>{{key}}:  {{address_data[key]}}</li>
+            {% endfor %}
+        </ul>
+
+{%endblock%}
+

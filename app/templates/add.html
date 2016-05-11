@@ -1,0 +1,30 @@
+{%extends "base.html"%}
+{%block content%}
+        <form  name="form1" method="post" action="">
+		 {{form.hidden_tag()}}
+		 <div class="input_message" >
+		 <span class="float_left">输入单号：<input type="text" name="danhao" class="danhao"></span>
+		 <span class="float_right">选择日期：<input type="date" name="chose_date" class="chose_date" value="{{order_date}}"></span>
+		 </div>
+		 <div style="clear:both;"> </div>
+		 <div class="input_message">
+		 <span style="padding-right:20px;">{{form.goods.label}}</span><span class="styled-select">{{form.goods()}}</span>
+		 <span sytle="padding-left:80px;" >{{form.quantity.label}}{{form.quantity()}}</span> 
+		 <span class="addrow float_right">新增一行</span>
+		 </div>
+
+		 
+
+		 <table>
+		 <tr><th width="50">序号</td><th width="250">商品型号</th><th width="100">数量</th><th width="160">选择/全选<input type="checkbox" id="ckall" /></th></tr>
+		<tr id="tbfoot">
+		    <td colspan="4"  ><span class="count">The count:</span>
+		    <span><input type="text" id="the_count" name="goods_count" readonly="true" value="0" ></span>
+		    <span class="delrow">删除选中行</span><span class="form_post">保存数据</span></td>
+		</tr>
+		</table>
+
+		</form>
+
+{%endblock%}
+

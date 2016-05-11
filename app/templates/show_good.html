@@ -1,0 +1,18 @@
+{%extends "base.html"%}
+{%block content%}
+<div class="ul_li_table_500">
+    <ul>
+            <li class="bt">序号</li>
+            <li class="bt">品名</li>
+            <li class="bt">发货价</li>
+            <li class="bt">零售价</li>
+{% for good in goods %}
+    <li></li>
+    <li>{{good.good_name}}</li>
+    <li>{{good.wholesale_price}}</li>
+    <li>{{good.retail_price}}</li>
+
+{% endfor %}
+    </ul>
+</div>
+{%endblock%}

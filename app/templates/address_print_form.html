@@ -1,0 +1,53 @@
+{% extends "address_print_base.html" %}
+{% block content %}
+<div class="container" style="margin-top:80px;color:#ffffff">
+<div style="padding-top:100px"></div>
+<h1 class="text-center">输入地址打快递单</h1>
+<p>&nbsp;</p>
+<form  name="form1" method="post" action="">
+	 {{form.hidden_tag()}}
+	  <div class="form-group row">
+	  <div class="col-md-3 text-right ">
+		<label>{{form.express.label}}</label></div>
+	  <div class="col-md-7">
+	  {% for item in form.express %}
+	  <label>{{item}}{{item.label}}</label>
+	  {% endfor %}
+	  </div>
+  </div>
+  <div class="form-group row">
+	  <div class="col-md-3 text-right ">
+		<label>{{form.post_message.label}}</label></div>
+	  <div class="col-md-7">
+	  {{form.post_message(size=60,class="form-control col-md-5",
+	  value="郭永祥，15905532263，0553-5869291，安徽省芜湖市镜湖区美加印象A5-2-501,241000")}}
+	  </div>
+  </div>
+ <div class="form-group row">
+  <div class="col-md-3 text-right ">
+	<label>{{form.receive_message.label}}</label></div>
+	<div class="col-md-7">
+   {{form.receive_message(size=60,class="form-control col-md-5",
+   placeholder="格式：姓名，电话，电话，地址，邮编 逗号分隔")}}
+   </div>
+  </div>
+  <div class="form-group row">
+   <div class="col-md-3 text-right ">
+  <label class="text-reight">{{form.order_message.label}}</label></div>
+  <div class="col-md-7">
+  {{form.order_message(size=60,class="form-control col-md-5",
+  placeholder="要换行，请用<br>标签")}}
+  </div>
+  </div>
+  
+  <div class="form-group row" style="margin-top:20px;">
+  <div class="col-md-2 col-md-offset-4">
+  <input class="form-control" name="" type="submit" value="确认"/></div>
+   <div class="col-md-2 ">
+  <input class="form-control" name="" type="reset" value="清除"/></div>
+  </div>
+</form>
+<div class="row" style="height:100px">
+</div>
+{% endblock %}
+

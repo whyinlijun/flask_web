@@ -1,0 +1,48 @@
+
+<html lang="zh-CN">
+    <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--如果不加上面两个标签，会与CSS冲突 -->
+    {% if title %}
+       <title> {{title}}-Web Place</title>
+     {% else %}
+       <title> Yinsir-Web Place</title>
+    {% endif %}
+	<link rel="stylesheet" href="{{url_for('static', filename='myweb.css')}}"}>
+    <script src="{{url_for('static', filename='jquery.js')}}"></script>
+    <script src="{{url_for('static',filename='myscript.js')}}"></script>
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    </head>
+    <body>
+        <div class="header">
+        <div class="logo"><h1>Yin Sir:</h1></div>
+        <div class="nav">
+            <ul>
+                <li><a href="/index">首页</a> </li>
+                <li><a href="/print">快递单</a> </li>
+                <li><a href="/add">进货单</a></li>
+                <li><a href="/show">进货统计</a></li>
+                <li><a href="/show/good">商品信息</a></li>
+            </ul></div>
+        </div>
+        <hr>
+        {%block content%}{%endblock%}
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }} </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    </body>
+</html>
+

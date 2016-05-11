@@ -1,0 +1,55 @@
+{% extends "address_print_base.html" %}}
+{% block content %}
+{% if express_chose=='2' %}
+<!--发件信息：post_message ,收件信息：receive_message,发件日期：post_date -->
+<div style="width:670px; height:361px; overflow:hidden; background:url(../static/images/yto.jpg); font-size:14px;  word-wrap : break-word ;color:red;margin:auto;">
+	<div style="width:670px; height:50px;"></div><!--原值高度57-->
+	<div style="width:30px;height:300px;float:left;"></div><!--加右偏移，原值40-->
+	<div style="width:320px; height:246px; overflow:hidden; float:left; ">
+		<div style="width:160px; height:42px; overflow:hidden; float:left; padding-left:54px; padding-top:12px;">
+		{{post_message.name}}
+		</div>
+		<div style="width:160px; height:30px; overflow:hidden; float:left; padding-top:12px;">
+		芜湖
+		</div>
+		<div style="width:320px; height:48px; overflow:hidden; padding-left:43px; line-height:16px; ">
+		<div >
+		<!--店铺名称--></div>
+		<div >
+		{{post_message.address}}</div>
+		<div>电话:{{post_message.mobile}}/{{post_message.tel}}</div>
+		</div>
+		<div style="width:320px; height:122px; overflow:hidden; font-size:16px; padding-left:6px; line-height:14px;">
+			{{order_message|safe}}
+		</div>
+		<div style="width:276px;height:18px; overflow:hidden;  text-indent:30px; ">
+	    <span>{{print_date}}</span>
+		</div>
+	</div>
+	<div style="width:10px;height:300px;float:left;"></div><!--中间加右偏移，原值10-->
+	<div style="width:310px; height:246px; overflow:hidden; float:left">
+		<div style="width:170px; height:42px;overflow:hidden; float:left; font-size:16px; padding-left:50px; padding-top:12px;">
+		{{receive_message.name}}
+		</div>
+		<div style="width:120px; height:30px;overflow:hidden; padding-left:50px; float:left; padding-left:30px; padding-top:12px;">
+		{{receive_message.zip}}
+		</div>
+		<div style="width:310px; height:51px;overflow:hidden; padding-left:20px;  text-indent:20px; font-size:16px; line-height:17px;">
+		{{receive_message.address}}
+		</div>
+		<div style="width:310px; height:30px; overflow:hidden; padding-left:60px; font-size:16px; line-height:16px; ">
+		{{receive_message.mobile}}/{{receive_message.tel}}
+		</div>
+		<!--
+		<div style="width:266px; height:52px;overflow:hidden; ">
+		买家留言:<br>卖家备注:
+		</div>
+		<div style="width:266px; height:53px;overflow:hidden;font-size:12px;padding-top:25px; line-height:14px; ">
+		提示信息：
+		</div>-->
+	</div>
+</div>
+{% else %}
+<span style="color:red">不是圆通模版</span>
+{% endif %}
+{% endblock %}
