@@ -55,6 +55,10 @@ $(".form_post").click(function(){
 	});
 	*/
 });
+$(".danghao").click(function(){
+	//add show html
+	getDivHtml($(this).attr("val"));
+});
 //匹配ready()
 });
 //配置序号
@@ -73,4 +77,52 @@ function count_quan(){
 		count_num=count_num+Number($(this).val());
 	});
 	$("#the_count").val(count_num);
+}
+//popup
+function popupDiv(div_id) {
+	var div_obj = $("#"+div_id);
+	var windowWidth = $(window).width() ;
+	var windowHeight = $(window).height() ;
+	//firefox is doucument height
+	var popupHeight = div_obj.attr("height");
+	var popupWidth = div_obj.attr("width");
+	var pop_top;
+	if (windowHeight-popupHeight<=0){
+      		pop_top=420-popupHeight/2;
+	}else{
+      		pop_top=windowHeight/2-popupHeight/2;
+	}
+	//添加并显示遮罩层
+	$("<div id='mask'></div>").addClass("mask")
+	.click(function() {hideDiv(div_id); })
+	.appendTo("body")
+	.fadeTo(100,0.8);
+	div_obj.css({
+		"top":pop_top+"px",
+		"left":windowWidth/2-popupWidth/2,
+		"width":popupWidth+"px",
+		"height":popupHeight+"px",
+		"overflow":"hidden",
+	})
+	.fadeTo(1000,0.8);
+}
+//popmove
+function hideDiv(div_id) {
+	$("#" + div_id).fadeOut(500);
+	$("#mask").fadeTo(1000,0.0).remove();
+}
+//insert pophtml
+function getDivHtml(url){
+	$.ajax({
+		type:"GET",
+		url:url,
+		dataType : "html",
+		success: function(data){
+			$(".pop-box-body").html($(".pop-box-body").html(data).find(".ul_li_table_500").prop("outerHTML"));
+			//$(".pop-box-body").html(data);
+		},
+		error:function(){
+			alert("error");
+		}
+	})
 }

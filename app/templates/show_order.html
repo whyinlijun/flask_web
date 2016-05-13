@@ -8,11 +8,17 @@
             <li class="bt">数量</li>
             <li class="bt">金额</li>
 {% for order in orders %}
-    <li><a href="{{url_for('show_order_detail',order_num_get=order.order_num)}}">{{order.order_num}}</a></li>
+    <li><a class="danghao" val="{{url_for('show_order_detail',order_num_get=order.order_num)}}" onclick="popupDiv('pop-box')">{{order.order_num}}</a></li>
     <li>{{order.order_date}}</li>
     <li style="text-align:right;">{{order.order_quantity}}</li>
     <li style="text-align:right;">{{order.order_sum}}</li>
 {% endfor %}
     </ul>
+</div>
+<div class="pop-box" id="pop-box" width="800"  >
+    <div class="pop-box-title"><h3>this is the title</h3></div>
+    <div class="pop-box-body">
+        
+    </div>
 </div>
 {%endblock%}
